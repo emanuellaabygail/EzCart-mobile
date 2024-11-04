@@ -1,16 +1,16 @@
-# ezcart
+<h1>EzCart</h1>
 
-A new Flutter project.
+<details>
+<summary>Tugas 7</summary>
 
-## Getting Started
+### 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
+**Stateful widgets** adalah widgets yang dapat mengubah *state* ataupun tampilannya. Tampilan widget dapat berubah karena interaksi pengguna atau terjadi *event* internal yang memicu perubahan data.
+**Stateless widgets** adalah widgets yang statis, komponen-komponen pada UI hanya dapat diatur pada konfigurasi *constructor* sehingga data tidak akan berubah.
+**Perbedaan** dari stateful dan stateless widgets adalah stateful widgets adalah widgets yang dinamis, widgets ini akan diubah sesuai dengan perubahan data ataupun user action, stateful widgets dapat dirender ulang seiring dengan perubahan state. Stateless widgets adalah widgets yang statis, tidak tergantung pada perubahan data, dan hanya dirender sekali.
 
-This project is a starting point for a Flutter application.
+### 2. Sebutkan widget apa saja yang kamu gunakan pada proyek ini dan jelaskan fungsinya.
+Terdapat 4 *widget* pada proyek ini, yaitu MyApp yang terdapat pada main.dart dan juga MyHomePage, InfoCard, dan ItemCard yang terdapat pada menu.dart. **MyApp** adalah widget yang menjadi *root* atau akar dari aplikasi, widget ini yang menjadi wadah untuk menampilkan keseluruhan aplikasi kita. **MyHomePage** adalah widget yang menyediakan struktur dasar halaman berupa AppBar dan body, widget ini menyususn tampilan dari aplikasi kita. **InfoCard** adalah widget yang berfungsi untuk menampilkan informasi nama, NPM, dan kelas. **ItemCard** adalah widget yang berfungsi untuk menampilkan tombol-tombol serta Snackbar ketika tombol tersebut ditekan.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 3. Apa fungsi dari `setState()`? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
+Fungsi `setState()` berguna untuk memicu proses render ulang dari sebuah *stateful widget*. Ketika terdapat perubahan data yang akan mengubah UI aplikasi, kita perlu memanggil fungsi `setState()`.
+</details>
