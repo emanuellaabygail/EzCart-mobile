@@ -19,9 +19,9 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       // AppBar adalah bagian atas halaman yang menampilkan judul.
       appBar: AppBar(
-        // Judul aplikasi "Mental Health Tracker" dengan teks putih dan tebal.
+        // Judul aplikasi "EzCart" dengan teks putih dan tebal.
         title: const Text(
-          'Mental Health Tracker',
+          'EzCart',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Welcome to Mental Health Tracker',
+                      'Welcome to EzCart! What do you want to do?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
