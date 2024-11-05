@@ -2,7 +2,7 @@
 <h2>Emanuella Abygail - 2306152185 - PBP C</h2>
 
 <details>
-<summary>Tugas 7</summary>
+<summary><h3>Tugas 7</h3></summary>
 
 ### 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya!
 **Stateful widgets** adalah widgets yang dapat mengubah *state* ataupun tampilannya. Tampilan widget dapat berubah karena interaksi pengguna atau terjadi *event* internal yang memicu perubahan data.
