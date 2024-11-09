@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ezcart/menu.dart';
+import 'package:ezcart/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());

@@ -38,3 +38,6 @@ Variabel pada `const` dan `final` sama-sama tidak dapat di-*assigned* kembali. P
 - Selanjutnya, saya membuat widget sederhana. Saya mengubah tema warna aplikasi pada `colorScheme` yang terdapat pada `main.dart`. Lalu saya mengubah sifat widget yang tadinya *stateful* menjadi *stateless*. Kemudian, saya membuat card sederhana berisi data NPM, nama, dan juga kelas dan membuat class baru, yaitu `InfoCard` yang akan menjadi wadah dengan struktur *card* yang akan menampilkan data. Saya juga membuat *button card* dengan membuat class `ItemHomePage`, list of `ItemHomePage`, dan class `ItemCard` untuk menampilkan tombol-tombol yang dibuat. Pada class `ItemCard`, saya mengatur susunan tombol-tombol, warna tombol, dan bagaimana masing-masing tombol akan memunculkan `SnackBar` yang menampilkan pesan "Kamu telah menekan tombol {nama tombol}" ketika tombol tersebut ditekan. Setelah mendefinisikan masing-masing komponen yang akan muncul pada aplikasi, saya mengintegrasikan `InfoCard` dan `ItemCard` untuk ditampilkan di `MyHomePage` dengan cara mengubah bagian `Widget build()`.
 
 </details>
+
+<details>
+</details>
