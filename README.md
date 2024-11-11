@@ -2,7 +2,7 @@
 <h2>Emanuella Abygail - 2306152185 - PBP C</h2>
 
 <details>
-<summary>Tugas 7</summary>
+<summary><h3>Tugas 7</h3></summary>
 
 ### 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya!
 **Stateful widgets** adalah widgets yang dapat mengubah *state* ataupun tampilannya. Tampilan widget dapat berubah karena interaksi pengguna atau terjadi *event* internal yang memicu perubahan data.
@@ -40,4 +40,60 @@ Variabel pada `const` dan `final` sama-sama tidak dapat di-*assigned* kembali. P
 </details>
 
 <details>
+<summary><h3>Tugas 8</h3></summary>
+
+### 1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+Dalam Flutter, `const` digunakan untuk medeklarasikan suatu konstanta atau suatu object immutable yang nilainya terdefinisi pada saat program di-*compile*. 
+
+Keuntungan menggunakan `const` adalah efisiensi memori karena objek yang dideklarasikan menggunakan `const` hanya dibuat sekali, kinerja yang lebih baik karena objek `const` dibuat saat program di-*compile* sehingga tidak perlu membuat ulang objek saat program dijalankan dan aplikasi menjadi lebih efisien, kode lebih stabil karena objek `const` tidak dapat diubah atau immutable, dan objek `const` dioptimalkan oleh Dart secara *canonicalization* sehingga kinerja aplikasi meningkat.
+
+Sebaiknya kita menggunakan `const` ketika membuat suatu *Stateless Widgets* yang tidak akan berubah, ketika membuat suatu parameter konstanta yang bernilai tetap, dan membuat objek yang ingin digunakan kembali tanpa mengubah nilainya.
+
+Sebaiknya kita tidak menggunakan `const` saat membuat *Stateful Widgets* yang propertinya dapat berubah tergantung pada statenya, membuat properti suatu objek yang nilainya dapat berubah ketika *runtime*, membuat variabel yang nilainya didapatkan berdasarkan kondisi ataupun input pengguna, dan saat membuat objek yang nilainya belum didefinisikan pada saat program di-*compile*. 
+
+### 2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+Row dan Column digunakan untuk menyusun widget. Column digunakan untuk menyusun widget secara vertikal dari atas ke bawah, sedangkan row digunakan utnuk menyusun widget dari kiri ke kanan.
+Contoh penggunaan Column:
+```dart
+Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+        const Text('Item 1', style: TextStyle(fontSize: 24)),
+        const Text('Item 2', style: TextStyle(fontSize: 24)),
+        const Text('Item 3', style: TextStyle(fontSize: 24)),
+    ],
+),
+```
+
+Contoh penggunaan Row:
+```dart
+Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+    const Icon(Icons.star, size: 50, color: Colors.yellow),
+    const Icon(Icons.favorite, size: 50, color: Colors.red),
+    const Icon(Icons.thumb_up, size: 50, color: Colors.blue),
+    ],
+),
+```
+
+### 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+Pada proyek ini, elemen input yang saya gunakan adalah `TextFormField` untuk memasukan nama, amount, dan juga description dari barang yang ingin ditambahkan. Terdapat berbagai elemen input lain pada Flutter, berikut adalah beberapa di antaranya:
+1. `TextField`: adalah widget input teks dasar yang menerima masukan dari user. Perbedaannya dengan `TextFormField` adalah widget ini tidak memiliki properti `validator` sehingga tidak dapat memvalidasi input user.
+2. `Checkbox`: adalah widget yang menerima input pilihan biner berupa benar atau salah berdasarkan apakah user menekan widget tersebut. 
+3. `Radio`: adalah widget yang menerima input satu pilihan tunggal dari beberapa opsi. Widget ini ideal digunakan ketika kita membutuhkan user untuk memilih satu opsi dari beberapa pilihan.
+4. `DropdownButton`: adalah widget yang menerima input pilihan dari daftar pilihan yang ditunjukan kepada user dengan tampilan dropdown.
+5. `Switch`: adalah widget untuk mengaktifkan ataupun menonaktifkan suatu opsi yang berupa on atau off. Widget ini mengganti status antara aktif atau tidak aktif.
+6. `Slide`: adalah widget yang menerima input berupa pilihan nilai dari rentang tertentu.
+7. `DatePicker`: adalah widget yang menerima input pilihan tanggal. Widget ini akan menunjukan pilihan tanggal kemudian user dapat memilih tanggal tersebut.
+8. `TimePicker`: adalah widget yang menerima input pilihan waktu. Widget akan membukan pop-up untuk memilih waktu (jam dan menit) lalu user akan memilih waktu yang sesuai.
+
+### 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+Untuk mengatur tema dari aplikasi ini, saya menggunakan properti `ThemeData` pada file `main.dart`. Pada properti ini, saya mengatur warna primer dan sekunder yang akan digunakan pada aplikasi saya sehingga pengaturan warna yang digunakan pada keseluruhan aplikasi konsisten.
+
+### 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+Untuk menangani navigasi dalam aplikasi, saya menggunakan widget `Navigator`. Widget ini berguna untuk mengelola stack halaman. Untuk membuka halaman baru dari halaman sebelumnya, saya menambahkan perintah `Navigator.push()`.
+
 </details>
