@@ -97,3 +97,63 @@ Untuk mengatur tema dari aplikasi ini, saya menggunakan properti `ThemeData` pad
 Untuk menangani navigasi dalam aplikasi, saya menggunakan widget `Navigator`. Widget ini berguna untuk mengelola stack halaman. Untuk membuka halaman baru dari halaman sebelumnya, saya menambahkan perintah `Navigator.push()`.
 
 </details>
+
+<details>
+<summary><h3>Tugas 9</h3></summary>
+
+### 1. Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
+Membuat model untuk pengambilan atau pengiriman data JSON sangat penting karena model membantu mendefinisikan struktur dan tipe data secara konsisten. Dengan model, kita dapat memetakan data JSON menjadi objek yang dapat digunakan di aplikasi, memvalidasi data sebelum diproses, dan meminimalkan risiko kesalahan saat berinteraksi dengan API. Tanpa model, kesalahan dapat terjadi ketika struktur data tidak sesuai atau tipe data tidak cocok, sehingga proses parsing atau pemrosesan data menjadi lebih rumit.
+
+### 2. Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini
+Library http yang diimplementasikan pada tugas ini memiliki fungsi utama untuk melakukan komunikasi antara aplikasi Flutter dan server. Library ini digunakan untuk mengirimkan permintaan HTTP, seperti GET untuk mengambil data dan POST untuk mengirimkan data. Selain itu, library ini juga memungkinkan kita untuk menambahkan header atau parameter, serta menangani status respons dari server seperti berhasil, gagal, atau tidak ditemukan.
+
+### 3. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest berfungsi untuk mengelola cookie yang digunakan dalam proses autentikasi berbasis sesi. Cookie ini digunakan untuk memastikan bahwa sesi autentikasi pengguna tetap terjaga selama mereka menggunakan aplikasi. Instance dari CookieRequest perlu dibagikan ke semua komponen aplikasi agar status autentikasi dan informasi cookie tetap konsisten, sehingga pengguna tidak perlu login ulang saat berpindah antar fitur atau halaman aplikasi.
+
+### 4. Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+Mekanisme pengiriman data dari input hingga dapat ditampilkan di Flutter dimulai dari pengguna yang memasukkan data pada form input di aplikasi Flutter. Data tersebut kemudian dikirimkan ke server Django melalui permintaan HTTP dalam format JSON. Server memproses data, seperti menyimpan ke database atau memvalidasi input, dan mengembalikan respons JSON. Aplikasi Flutter kemudian mem-parsing data JSON ini ke dalam model yang sudah ditentukan sebelumnya dan menampilkan data tersebut pada antarmuka pengguna.
+
+### 5. Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+Proses autentikasi pada aplikasi dimulai dengan pengguna yang melakukan register dengan memasukkan data akun yang dikirimkan ke endpoint register di Django. Data ini disimpan setelah validasi. Untuk login, pengguna mengirimkan kredensial ke endpoint login, yang kemudian memvalidasi informasi dan mengembalikan cookie sesi jika berhasil. Cookie ini digunakan untuk mengakses fitur yang membutuhkan autentikasi. Logout dilakukan dengan mengirimkan permintaan ke endpoint logout, yang menghapus sesi pengguna di server. Setelah login berhasil, aplikasi menerima data pengguna dari server dan menampilkan menu atau fitur yang sesuai di antarmuka Flutter.
+
+### 6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+**1. Mengimplementasikan fitur registrasi akun pada proyek tugas Flutter**
+- Membuat form registrasi menggunakan widget `TextFormField` untuk input seperti username, password, dan email.
+- Mengirimkan data form ke endpoint Django `/auth/register/` menggunakan `http.post`.
+- Memvalidasi respons server untuk memastikan apakah proses registrasi berhasil atau terjadi kesalahan.
+- Menambahkan notifikasi kepada pengguna berdasarkan hasil respons dari server.
+
+**2. Membuat halaman login pada proyek tugas Flutter**
+- Membuat halaman login dengan form input untuk username dan password.
+- Mengirimkan data login ke endpoint Django `/auth/login/` menggunakan `http.post`.
+- Jika login berhasil, menyimpan cookie sesi menggunakan `CookieRequest` untuk autentikasi pengguna.
+- Menambahkan validasi untuk menangani kasus login gagal, seperti username atau password salah, dan memberikan notifikasi kepada pengguna.
+
+**3. Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter**
+- Mengaktifkan middleware autentikasi berbasis sesi pada Django.
+- Menggunakan `CookieRequest` di Flutter untuk menyimpan cookie sesi setelah login berhasil.
+- Mengatur agar setiap permintaan HTTP dari Flutter menyertakan cookie untuk mengakses endpoint yang memerlukan autentikasi.
+
+**4. Membuat model kustom sesuai dengan proyek aplikasi Django**
+- Mendefinisikan model `Item` di Django dengan atribut seperti `name`, `price`, `description`, dan `owner`.
+- Membuat serializer menggunakan `serializers.ModelSerializer` untuk mengubah objek Django menjadi format JSON.
+- Membuat endpoint JSON untuk daftar item dengan menggunakan Django REST framework.
+
+**5. Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah kamu deploy**
+- Membuat endpoint di Django untuk menampilkan daftar item melalui URL `/items/`.
+- Mengambil data dari endpoint ini menggunakan `http.get` di Flutter.
+- Mem-parsing respons JSON menjadi objek Dart menggunakan model yang telah dibuat.
+- Menampilkan daftar item pada halaman dengan widget `ListView.builder`, menampilkan `name`, `price`, dan `description` untuk setiap item.
+
+**6. Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar item**
+- Menambahkan navigasi pada halaman daftar item dengan `Navigator.push` untuk berpindah ke halaman detail ketika item ditekan.
+- Membuat halaman detail yang menerima data item sebagai parameter.
+- Menampilkan seluruh atribut item pada halaman ini menggunakan widget seperti `Text` dan `Column`.
+- Menambahkan tombol "Kembali" dengan widget `ElevatedButton` yang memanfaatkan `Navigator.pop` untuk kembali ke halaman daftar item.
+
+**7. Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login**
+- Menambahkan atribut `owner` pada model `Item` di Django, yang merupakan `ForeignKey` ke model User.
+- Memodifikasi query pada endpoint `/items/` untuk hanya mengambil item milik pengguna yang sedang login.
+- Mengirimkan cookie autentikasi bersama permintaan dari Flutter untuk memastikan hanya item yang relevan yang ditampilkan di halaman daftar item.
+
+</details>
